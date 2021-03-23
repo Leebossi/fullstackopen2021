@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 
-const Vote = (points, selected) => {
-  const copy = [...points]
+const Vote = (votes, selected) => {
+  const copy = [...votes]
   copy[selected] += 1
   return copy
 }
 
 const MostVotes = (props) => {
-  const index = props.points.indexOf(Math.max(...props.points))
+  const index = props.votes.indexOf(Math.max(...props.votes))
   return (
     <div>
       <p>{props.anecdotes[index]}</p>
-      <p>has {props.points[index]} votes</p>
+      <p>has {props.votes[index]} votes</p>
     </div>
   )
 }
@@ -27,15 +27,15 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
-  const [points, setPoints] = useState(new Array(anecdotes.length).fill(0))
+  const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
 
   return (
     <div>
       <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
-      <p>has {points[selected]} votes</p>
+      <p>has {votes[selected]} votes</p>
       <div>
-      <button onClick={() => setPoints(Vote(points, selected))}>
+      <button onClick={() => setVotes(Vote(votes, selected))}>
         Vote
       </button>
       <button onClick={() => setSelected(Math.floor(Math.random() * 6))}>
@@ -43,7 +43,7 @@ const App = () => {
       </button>
       </div>
       <h1>Anecdote with most votes</h1>
-      <MostVotes points={points} anecdotes={anecdotes}/>
+      <MostVotes votes={votes} anecdotes={anecdotes}/>
     </div>
   )
 }
