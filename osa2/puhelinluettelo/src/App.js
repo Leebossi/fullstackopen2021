@@ -86,7 +86,7 @@ const App = () => {
       personService
         .eradicate(person.id)
         .then(response => {
-          setPersons(persons.filter(n => n.id !== person.id))
+          setPersons(persons.filter(p => p.id !== person.id))
           setNotification({ message: `Deleted ${person.name}`, type: 'success' })
           setTimeout(() => {
             setNotification(null)
