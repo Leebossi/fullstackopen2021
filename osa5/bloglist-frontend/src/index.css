@@ -1,15 +1,30 @@
+h2 {
+    text-transform: uppercase;
+}
+
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    width: 300px;
+}
+
+form button {
+    margin-top: 10px;
+}
 
 .notification {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(16, 16, 16);
     background: lightgrey;
     font-size: 20px;
     border-style: solid;
-    border-radius: 5px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px 0;
   }
 
 .error {
@@ -29,13 +44,25 @@
     justify-content: space-between;
 }
 
-.form {
-    background-color: rgb(230, 230, 230);
-    padding: 10px;
-}
+
 .login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.hide-btn {
+    margin: 10px 10px;
+}
+
+.remove-btn {
+    color: red;
+}
+
+.container {
+    background-color: rgb(230, 230, 230);
+    border: solid 2px;
+    margin: 5px 0;
+    padding: 10px;
 }

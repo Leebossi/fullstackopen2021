@@ -21,7 +21,7 @@ const BlogForm = ({ addBlog }) => {
     }
 
     return (
-        <div className="form blog-form">
+        <div className="container">
             <h2>Add new</h2>
             <form onSubmit={handleAdd}>
                 <div>
