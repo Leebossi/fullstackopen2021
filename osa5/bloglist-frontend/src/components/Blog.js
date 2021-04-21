@@ -1,14 +1,7 @@
 import React, { useState } from 'react'
-import blogService from '../services/blogs'
 
-const Blog = ({ blog, deleteBlog, refresh, user }) => {
+const Blog = ({ blog, deleteBlog, user, like }) => {
   const [fullInfoVisible, setFullInfoVisible] = useState(false)
-
-  const handleLike = async (blog) => {
-    blog.likes++
-    await blogService.update(blog)
-    refresh()
-  }
 
   const handleDelete = async (blog) => {
     if (window.confirm(`remove blog ${blog.title}?`)) {
@@ -24,7 +17,7 @@ const Blog = ({ blog, deleteBlog, refresh, user }) => {
       {fullInfoVisible && (
         <div>
           <a href={blog.url} target="_blank" rel="noreferrer noopener">{blog.url}</a>
-          <p> <button onClick={() => handleLike(blog)} className="like-btn">like</button> {blog.likes} </p>
+          <p> <button onClick={() => like(blog)} className="like-btn">like</button> {blog.likes} </p>
           {blog.user.id === user.id && (
             <button onClick={() => handleDelete(blog)} className="remove-btn">remove</button>
           )}

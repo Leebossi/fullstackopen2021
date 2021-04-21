@@ -36,6 +36,7 @@ const App = () => {
       )
       blogService.setToken(user.token)
       setUser(user)
+      console.log(user)
       setNotification({ message: `${user.username} logged in`, type: 'success' })
       setTimeout(() => {
         setNotification(null)
@@ -91,6 +92,12 @@ const App = () => {
     }
   }
 
+  const handleLike = async (blog) => {
+    blog.likes++
+    await blogService.update(blog)
+    getAllBlogs()
+  }
+
   const sortBasedOnLikes = (blogs) => {
     blogs.sort((a, b) => {
       if (a.likes < b.likes) {
@@ -116,7 +123,7 @@ const App = () => {
     <div>
       <h2>blogs</h2>
       {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} deleteBlog={deleteBlog} refresh={getAllBlogs} user={user} />
+        <Blog key={blog.id} blog={blog} deleteBlog={deleteBlog} refresh={getAllBlogs} user={user} like={handleLike} />
       )}
     </div>
   )
