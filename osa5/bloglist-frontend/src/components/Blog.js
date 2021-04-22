@@ -10,7 +10,7 @@ const Blog = ({ blog, deleteBlog, user, like }) => {
   }
 
   return (
-    <div className="container">
+    <div className="container blog">
       <div>
         {blog.title} {blog.author} <button onClick={() => setFullInfoVisible(!fullInfoVisible)}>{fullInfoVisible ? 'hide' : 'show'}</button>
       </div>
