@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import Blog from './components/Blog'
 import BlogForm from './components/BlogForm'
 import LoginForm from './components/LoginForm'
 import Notification from './components/Notification'
+import { setNotification } from './reducers/notificationReducer'
 import Togglable from './components/Togglable'
 import blogService from './services/blogs'
 import loginService from './services/login'
 
 const App = () => {
+  const dispatch = useDispatch()
   const [blogs, setBlogs] = useState([])
-  const [notification, setNotification] = useState(null)
   const [user, setUser] = useState(null)
 
   useEffect(() => {
@@ -37,25 +39,16 @@ const App = () => {
       blogService.setToken(user.token)
       setUser(user)
       console.log(user)
-      setNotification({ message: `${user.username} logged in`, type: 'success' })
-      setTimeout(() => {
-        setNotification(null)
-      }, 5000)
+      dispatch(setNotification(`Logged in as ${user.name}`, 'success', 5))
     } catch (exception) {
-      setNotification({ message: 'wrong username or password', type: 'error' })
-      setTimeout(() => {
-        setNotification(null)
-      }, 5000)
+      dispatch(setNotification('wrong username or password', 'error', 5))
     }
   }
 
   const handleLogout = () => {
     setUser(null)
     window.localStorage.removeItem('loggedBloglistUser')
-    setNotification({ message: 'succesfully logged out', type: 'info' })
-    setTimeout(() => {
-      setNotification(null)
-    }, 5000)
+    dispatch(setNotification('succesfully logged out', 'info', 5))
   }
 
   const addBlog = async (blog) => {
@@ -63,15 +56,9 @@ const App = () => {
       const newBlog = await blogService.create(blog)
       addBlogRef.current.toggleVisibility()
       setBlogs([...blogs, newBlog])
-      setNotification({ message: `a new blog ${blog.title} by ${blog.author} added`, type: 'info' })
-      setTimeout(() => {
-        setNotification(null)
-      }, 5000)
+      dispatch(setNotification(`a new blog ${blog.title} by ${blog.author} added`, 'info', 5))
     } catch (exception) {
-      setNotification({ message: 'error adding blog', type: 'error' })
-      setTimeout(() => {
-        setNotification(null)
-      }, 5000)
+      dispatch(setNotification('error adding blog', 'error', 5))
     }
   }
 
@@ -80,15 +67,9 @@ const App = () => {
       await blogService.remove(blog.id)
 
       setBlogs(sortBasedOnLikes(blogs.filter(b => b.id !== blog.id)))
-      setNotification({ message: 'blog deleted', type: 'info' })
-      setTimeout(() => {
-        setNotification(null)
-      }, 5000)
+      dispatch(setNotification('blog deleted', 'info', 5))
     } catch (exception) {
-      setNotification({ message: 'error deleting blog', type: 'error' })
-      setTimeout(() => {
-        setNotification(null)
-      }, 5000)
+      dispatch(setNotification('error deleting blog', 'error', 5))
     }
   }
 
@@ -130,7 +111,7 @@ const App = () => {
 
   return (
     <div>
-      <Notification notification={notification} />
+      <Notification />
       {user === null ?
         <LoginForm login={login} /> :
         <div>
