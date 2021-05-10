@@ -44,6 +44,10 @@ form button {
     justify-content: space-between;
 }
 
+.user-nav a {
+  padding-right: 10px;
+}
+
 
 .login-form {
     display: flex;

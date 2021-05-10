@@ -23,6 +23,10 @@ const Blog = () => {
     dispatch(likeBlog(blog))
   }
 
+  if (!blog) {
+    return null
+  }
+
   return (
     <div className="container blog">
       <h2>

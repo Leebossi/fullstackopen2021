@@ -6,9 +6,10 @@ import {
 } from 'react-router-dom'
 
 import { initializeBlogs } from './reducers/blogsReducer'
-import { setUser, logout } from './reducers/loginReducer'
+import { setUser } from './reducers/loginReducer'
 import { initializeUsers } from './reducers/usersReducer'
 
+import Menu from './components/Menu'
 import BlogForm from './components/BlogForm'
 import LoginForm from './components/LoginForm'
 import Notification from './components/Notification'
@@ -46,7 +47,7 @@ const App = () => {
         {user === null ?
           <LoginForm /> :
           <div>
-            <p className="container user-nav">logged in as {user.name}<button onClick={() => dispatch(logout())}>logout</button></p>
+            <Menu />
             <Switch>
               <Route path="/users/:id">
                 <User users={users} />
