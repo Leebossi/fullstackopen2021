@@ -14,6 +14,7 @@ import LoginForm from './components/LoginForm'
 import Notification from './components/Notification'
 import Togglable from './components/Togglable'
 import Blogs from './components/Blogs'
+import Blog from './components/Blog'
 import Users from './components/Users'
 import User from './components/User'
 
@@ -48,11 +49,15 @@ const App = () => {
             <p className="container user-nav">logged in as {user.name}<button onClick={() => dispatch(logout())}>logout</button></p>
             <Switch>
               <Route path="/users/:id">
-                <User users={users}/>
+                <User users={users} />
               </Route>
 
               <Route path="/users">
                 <Users />
+              </Route>
+
+              <Route path="/blogs/:id">
+                <Blog />
               </Route>
 
               <Route path="/">

@@ -47,7 +47,7 @@ test('renders url and likes after button click', () => {
   const component = render(
     <Blog blog={blog} user={user} />
   )
-  
+
   const button = component.getByText('show')
   fireEvent.click(button)
 
