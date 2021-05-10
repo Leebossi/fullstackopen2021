@@ -18,11 +18,11 @@ test('<BlogForm /> updates parent state and calls submit', () => {
   fireEvent.change(title, {
     target: { value: 'Test blog title' }
   })
-  
+
   fireEvent.change(author, {
     target: { value: 'Test blog author' }
   })
-  
+
   fireEvent.change(url, {
     target: { value: 'Test blog url' }
   })
