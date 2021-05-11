@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteBlog, likeBlog } from '../reducers/blogsReducer'
 import { useParams } from 'react-router-dom'
+import CommentForm from './CommentForm'
 
 const Blog = () => {
   const dispatch = useDispatch()
@@ -38,6 +39,15 @@ const Blog = () => {
         {blog.user.id === user.id && (
           <button onClick={() => handleDelete(blog)} className="remove-btn">remove</button>
         )}
+      </div>
+      <div>
+        <h3>Comments</h3>
+        <CommentForm />
+        <ul>
+          {blog.comments.map(comment =>
+            <li key={comment.id}>{comment.content}</li>
+          )}
+        </ul>
       </div>
     </div>
   )

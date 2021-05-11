@@ -4,12 +4,14 @@ import { setNotification } from './notificationReducer'
 const reducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_BLOG':
-      return [...state, action.blog]
+      return [...state, action.data.blog]
     case 'INIT_BLOGS':
       return action.data
     case 'LIKE_BLOG':
       return [...state]
     case 'DELETE_BLOG':
+      return [...state]
+    case 'COMMENT':
       return [...state]
     default: return state
   }
@@ -69,6 +71,18 @@ export const likeBlog = (blog) => {
       data: {
         likedBlog
       }
+    })
+  }
+}
+
+export const commentBlog = (blog, content) => {
+  return async dispatch => {
+    const comment = await blogService.comment(blog.id, content)
+    blog.comments.push({ content: comment.content, id: comment.id })
+
+    dispatch({
+      type: 'COMMENT',
+      blog
     })
   }
 }

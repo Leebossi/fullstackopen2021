@@ -1,9 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  BrowserRouter as Router,
-  Switch, Route
-} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import { initializeBlogs } from './reducers/blogsReducer'
 import { setUser } from './reducers/loginReducer'
@@ -41,38 +38,36 @@ const App = () => {
   const addBlogRef = useRef()
 
   return (
-    <Router>
-      <div>
-        <Notification />
-        {user === null ?
-          <LoginForm /> :
-          <div>
-            <Menu />
-            <Switch>
-              <Route path="/users/:id">
-                <User users={users} />
-              </Route>
+    <div>
+      <Notification />
+      {user === null ?
+        <LoginForm /> :
+        <div>
+          <Menu />
+          <Switch>
+            <Route path="/users/:id">
+              <User users={users} />
+            </Route>
 
-              <Route path="/users">
-                <Users />
-              </Route>
+            <Route path="/users">
+              <Users />
+            </Route>
 
-              <Route path="/blogs/:id">
-                <Blog />
-              </Route>
+            <Route path="/blogs/:id">
+              <Blog />
+            </Route>
 
-              <Route path="/">
-                <Togglable buttonLabel="new blog" ref={addBlogRef}>
-                  <BlogForm />
-                </Togglable>
-                <Blogs user={user} />
-              </Route>
+            <Route path="/">
+              <Togglable buttonLabel="new blog" ref={addBlogRef}>
+                <BlogForm />
+              </Togglable>
+              <Blogs user={user} />
+            </Route>
 
-            </Switch>
-          </div>
-        }
-      </div>
-    </Router>
+          </Switch>
+        </div>
+      }
+    </div>
   )
 }
 
