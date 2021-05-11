@@ -1,11 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteBlog, likeBlog } from '../reducers/blogsReducer'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import CommentForm from './CommentForm'
+import { Table, Button } from 'react-bootstrap'
 
 const Blog = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const blogs = useSelector(state => state.blogs)
   const user = useSelector(state => state.user)
@@ -16,6 +18,7 @@ const Blog = () => {
   const handleDelete = (blog) => {
     if (window.confirm(`remove blog ${blog.title}?`)) {
       dispatch(deleteBlog(blog))
+      history.push('/')
     }
   }
 
@@ -29,26 +32,32 @@ const Blog = () => {
   }
 
   return (
-    <div className="container blog">
+    <div className="container">
       <h2>
-        {blog.title} {blog.author}
+        {blog.title}, {blog.author}
       </h2>
       <div>
         <a href={blog.url} target="_blank" rel="noreferrer noopener">{blog.url}</a>
-        <p> <button onClick={() => handleLike(blog)} className="like-btn">like</button> {blog.likes} </p>
-        {blog.user.id === user.id && (
-          <button onClick={() => handleDelete(blog)} className="remove-btn">remove</button>
-        )}
+        <p> <Button variant="outline-success" onClick={() => handleLike(blog)} className="like-btn">like</Button> {blog.likes} </p>
       </div>
       <div>
         <h3>Comments</h3>
+        <Table striped>
+          <tbody>
+            {blog.comments.map(comment =>
+              <tr key={comment.id}>
+                <td>
+                  {comment.content}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
         <CommentForm />
-        <ul>
-          {blog.comments.map(comment =>
-            <li key={comment.id}>{comment.content}</li>
-          )}
-        </ul>
       </div>
+      {blog.user.id === user.id && (
+        <Button variant="outline-danger" onClick={() => handleDelete(blog)} className="remove-btn">remove blog</Button>
+      )}
     </div>
   )
 }

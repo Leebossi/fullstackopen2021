@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
 import { commentBlog } from '../reducers/blogsReducer'
+import { Form, Button } from 'react-bootstrap'
 
 
 const CommentForm = () => {
@@ -24,13 +25,15 @@ const CommentForm = () => {
 
   return (
     <form onSubmit={handleAdd}>
-      <input
-        id="content"
-        type="text"
-        value={comment}
-        name="comment"
-        onChange={({ target }) => setComment(target.value)} />
-      <button>comment</button>
+      <Form.Group className="d-flex">
+        <Form.Control
+          id="content"
+          type="text"
+          value={comment}
+          name="comment"
+          onChange={({ target }) => setComment(target.value)} />
+        <Button variant="outline-primary" type="submit">comment</Button>
+      </Form.Group>
     </form>
   )
 }

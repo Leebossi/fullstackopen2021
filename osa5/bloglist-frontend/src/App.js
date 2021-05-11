@@ -38,7 +38,7 @@ const App = () => {
   const addBlogRef = useRef()
 
   return (
-    <div>
+    <div className="container">
       <Notification />
       {user === null ?
         <LoginForm /> :

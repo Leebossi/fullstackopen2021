@@ -10,7 +10,7 @@ const reducer = (state = [], action) => {
     case 'LIKE_BLOG':
       return [...state]
     case 'DELETE_BLOG':
-      return [...state]
+      return state.filter(blog => blog.id !== action.blog.id)
     case 'COMMENT':
       return [...state]
     default: return state
