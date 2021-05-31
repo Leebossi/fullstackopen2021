@@ -49,6 +49,19 @@ mutation addBook($title: String!, $author: String!, $publishedInt: Int!, $genres
 }
 `
 
+export const BOOK_ADDED = gql`
+subscription {
+  bookAdded {
+    title
+    author {
+      name
+    }
+    genres
+    id
+  }
+}
+`
+
 export const EDIT_AUTHOR = gql`
 mutation editAuthor($name: String!, $bornInt: Int!) {
   editAuthor(name: $name, setBornTo: $bornInt) {
