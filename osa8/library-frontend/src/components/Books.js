@@ -39,7 +39,22 @@ const Books = (props) => {
 
   return (
     <div>
-      <h2>books in {genreFilter === null ? 'all genres' : `genre ${genreFilter}`}</h2>
+      <h2>books</h2>
+
+      <div>
+        {Array.from(genres).map(genre =>
+          <button key={genre} onClick={() => setGenre(genre)}
+            style={(genre === genreFilter ? style : null)}>
+            {genre}
+          </button>
+        )}
+        <button onClick={() => setGenreFilter(null)}
+          style={(genreFilter === null ? style : null)}>
+          all genres
+        </button>
+      </div>
+
+      in genre <b>{genreFilter === null ? 'all genres' : `${genreFilter}`}</b>
 
       <table>
         <tbody>
@@ -61,18 +76,6 @@ const Books = (props) => {
           )}
         </tbody>
       </table>
-      <div>
-        {Array.from(genres).map(genre =>
-          <button key={genre} onClick={() => setGenre(genre)}
-            style={(genre === genreFilter ? style : null)}>
-            {genre}
-          </button>
-        )}
-        <button onClick={() => setGenreFilter(null)}
-          style={(genreFilter === null ? style : null)}>
-          all genres
-        </button>
-      </div>
     </div>
   )
 }

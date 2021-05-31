@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useApolloClient, useQuery } from '@apollo/client'
-import { ALL_AUTHORS, ALL_BOOKS } from './queries'
+import { ALL_AUTHORS, ALL_BOOKS, CURRENT_USER } from './queries'
 
 import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
 import LoginForm from './components/LoginForm'
+import Recommendations from './components/Recommendations'
 
 const Notify = ({ errorMessage }) => {
   if (!errorMessage) {
@@ -25,6 +26,7 @@ const App = () => {
 
   const authorResult = useQuery(ALL_AUTHORS)
   const bookResult = useQuery(ALL_BOOKS)
+  const userResult = useQuery(CURRENT_USER)
 
   const client = useApolloClient()
 
@@ -64,6 +66,7 @@ const App = () => {
             <button onClick={() => setPage('authors')}>authors</button>
             <button onClick={() => setPage('books')}>books</button>
             <button onClick={() => setPage('add')}>add book</button>
+            <button onClick={() => setPage('recommend')}>recommend</button>
             <button onClick={logout}>logout</button>
           </div>
         }
@@ -90,6 +93,12 @@ const App = () => {
 
       <NewBook
         show={page === 'add'}
+      />
+
+      <Recommendations
+        show={page === 'recommend'}
+        books={bookResult.data.allBooks}
+        user={userResult.data.me}
       />
 
     </div>
