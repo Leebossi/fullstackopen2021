@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "ts-node": "ts-node",
-    "calculateBmi": "ts-node calculateBmi.ts"
+    "calculateBmi": "ts-node calculateBmi.ts",
+    "calculateExercises": "ts-node exerciseCalculator.ts"
   },
   "author": "Leevi Ossi",
   "license": "ISC",
