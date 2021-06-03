@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "dev": "ts-node-dev index.js",
-    "lint": "eslint --ext .ts ."
+    "dev": "ts-node-dev index.ts",
+    "lint": "eslint --ext .ts .",
+    "start": "node build/index.js"
   },
   "author": "Leevi Ossi",
   "license": "ISC",
@@ -19,6 +20,8 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
+    "@types/cors": "^2.8.10",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   }
 }
