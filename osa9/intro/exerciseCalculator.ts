@@ -13,7 +13,7 @@ interface exerciseValues {
   target: number;
 }
 
-const parseArguments = (args: Array<string>) => {
+const parseArguments = (args: Array<string>): exerciseValues => {
   if (args.length < 4) throw new Error('Not enough arguments');
 
   for (let i = 2; i < args.length; i++) {
@@ -23,7 +23,7 @@ const parseArguments = (args: Array<string>) => {
   }
 
   const target = Number(args[2]);
-  let period: Array<number> = [];
+  const period: Array<number> = [];
 
   for (let i = 3; i < args.length; i++) {
     period.push(Number(args[i]));
@@ -32,8 +32,8 @@ const parseArguments = (args: Array<string>) => {
   return {
     period,
     target
-  }
-}
+  };
+};
 
 const calculateExercises = (period: Array<number>, target: number): Result => {
   let success;
@@ -72,11 +72,13 @@ const calculateExercises = (period: Array<number>, target: number): Result => {
     target,
     average
   };
-}
+};
 
 try {
-  const { period, target } = parseArguments(process.argv)
+  const { period, target } = parseArguments(process.argv);
   console.log(calculateExercises(period, target));
 } catch (e) {
   console.log('Something went wrong! Error: ', e.message);
 }
+
+export default calculateExercises;

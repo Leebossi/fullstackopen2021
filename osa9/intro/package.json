@@ -8,13 +8,17 @@
     "calculateBmi": "ts-node calculateBmi.ts",
     "calculateExercises": "ts-node exerciseCalculator.ts",
     "start": "ts-node index.ts",
-    "dev": "ts-node-dev index.ts"
+    "dev": "ts-node-dev index.ts",
+    "lint": "eslint --ext .ts ."
   },
   "author": "Leevi Ossi",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.12",
     "@types/node": "^15.6.1",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
     "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.6",
     "typecript": "^0.0.1-security"
