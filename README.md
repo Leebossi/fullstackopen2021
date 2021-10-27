@@ -15,3 +15,6 @@ Exercises for the [Full Stack open](https://fullstackopen.com) 2021 course
 - [ ] Part 10 React Native
 - [ ] Part 11 CI/CD
 - [ ] Part 12 Containers
+
+## Certificates
+![certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/fi/b4d36f795c309f0e8578de2a15960892)
