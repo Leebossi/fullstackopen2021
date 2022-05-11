@@ -16,9 +16,9 @@ const calculateExercise = (
   const trainingDays = exerciseHours.filter((e) => e !== 0).length;
   let rating = 0;
   let ratingDescription = "";
-  
+
   const calcAvg = (array: number[]) =>
-  array.reduce((a, b) => a + b, 0) / array.length;
+    array.reduce((a, b) => a + b, 0) / array.length;
   const average = calcAvg(exerciseHours);
   const success = average >= target ? true : false;
 
@@ -48,8 +48,7 @@ const parseArgs = (args: Array<string>) => {
   if (args.length < 4) throw new Error("not enough arguments");
 
   const value1 = Number(args[2]);
-
-  let exerciseHours: Array<number> = [];
+  const exerciseHours: Array<number> = [];
 
   args.slice(3).map((x) => {
     if (isNaN(Number(x))) {
@@ -65,12 +64,12 @@ const parseArgs = (args: Array<string>) => {
 };
 
 try {
-  const { target, exerciseHours } = parseArgs(process.argv)
+  const { target, exerciseHours } = parseArgs(process.argv);
   console.log(calculateExercise(exerciseHours, target));
 } catch (error: unknown) {
-  let errorMessage = 'Something bad happened.'
+  let errorMessage = "Something bad happened.";
   if (error instanceof Error) {
-    errorMessage += ' Error: ' + error.message;
+    errorMessage += " Error: " + error.message;
   }
   console.log(errorMessage);
 }
