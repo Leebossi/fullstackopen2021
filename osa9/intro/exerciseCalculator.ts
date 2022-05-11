@@ -1,4 +1,4 @@
-interface ResultObject {
+export interface ResultObject {
   periodLength: number;
   trainingDays: number;
   success: boolean;
@@ -8,7 +8,7 @@ interface ResultObject {
   average: number;
 }
 
-const calculateExercise = (
+export const calculateExercise = (
   exerciseHours: number[],
   target: number
 ): ResultObject => {
