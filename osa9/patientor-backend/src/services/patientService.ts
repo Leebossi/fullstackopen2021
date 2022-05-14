@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import patientData from "../../data/patients.json";
+import patientData from "../../data/patients";
 import { v1 as uuid } from 'uuid';
 import { Patient, NonSensitivePatient, NewPatient } from "../types";
 
