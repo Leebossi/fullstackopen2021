@@ -1,24 +1,13 @@
 import React from "react";
+import Part from "./Part";
+import CoursePart from "../types";
 
-interface ContentProps {
-  courseParts: {
-    name: string;
-    exerciseCount: number;
-  }[];
-}
-
-const Content = (props: ContentProps) => {
+const Content = ({ courseParts }: { courseParts: CoursePart[] }) => {
   return (
     <div>
-      <p>
-        {props.courseParts[0].name} {props.courseParts[0].exerciseCount}
-      </p>
-      <p>
-        {props.courseParts[1].name} {props.courseParts[1].exerciseCount}
-      </p>
-      <p>
-        {props.courseParts[2].name} {props.courseParts[2].exerciseCount}
-      </p>
+      {courseParts.map((coursePart) => (
+        <Part key={coursePart.name} coursePart={coursePart} />
+      ))}
     </div>
   );
 };
