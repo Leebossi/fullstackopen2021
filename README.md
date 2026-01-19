@@ -17,4 +17,4 @@ Exercises for the [Full Stack open](https://fullstackopen.com)
 - [ ] Part 12 Containers
 
 ## Certificates
-![certificate](https://github.com/leebossi/fullstackopen2021/certificate.png)
+![certificate](https://github.com/Leebossi/fullstackopen2021/blob/main/certificate.png)
