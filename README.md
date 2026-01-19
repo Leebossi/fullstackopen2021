@@ -1,6 +1,8 @@
 # University of Helsinki Full Stack Open
 Exercises for the [Full Stack open](https://fullstackopen.com)
 
+![certificate](https://github.com/Leebossi/fullstackopen2021/blob/main/certificate.png)
+
 ## Parts
 - [x] Part 0  Fundamentals of Web apps
 - [x] Part 1  Introduction to React
@@ -16,5 +18,3 @@ Exercises for the [Full Stack open](https://fullstackopen.com)
 - [ ] Part 11 CI/CD
 - [ ] Part 12 Containers
 
-## Certificates
-![certificate](https://github.com/Leebossi/fullstackopen2021/blob/main/certificate.png)
