@@ -1,5 +1,5 @@
-# fullstackopen2021
-Exercises for the [Full Stack open](https://fullstackopen.com) 2021 course
+# University of Helsinki Full Stack Open
+Exercises for the [Full Stack open](https://fullstackopen.com)
 
 ## Parts
 - [x] Part 0  Fundamentals of Web apps
@@ -17,4 +17,4 @@ Exercises for the [Full Stack open](https://fullstackopen.com) 2021 course
 - [ ] Part 12 Containers
 
 ## Certificates
-![certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/b4d36f795c309f0e8578de2a15960892)
+![certificate](https://github.com/leebossi/fullstackopen2021/certificate.png)
